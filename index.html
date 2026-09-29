@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jared Khan · Product &amp; Technology Leader</title>
+<meta name="description" content="Jared Khan, Product & Technology Leader. Enterprise transformation in regulated lending, with AI and automation as current tools.">
+<style>
+  :root {
+    --bg: #fafafa;
+    --surface: #ffffff;
+    --border: #e4e4e7;
+    --text: #18181b;
+    --text-muted: #52525b;
+    --text-faint: #63636a;
+    --accent: #1e3a5f;
+    --accent-contrast: #ffffff;
+    --accent-soft: #eef2f6;
+    --chip-bg: #f4f4f5;
+    --chip-text: #3f3f46;
+    --gold-ink: #8a5f1f;
+
+    /* Fixed hero-band palette — deliberately does not invert with color-scheme;
+       this is an atmospheric choice (deep navy + warm bronze), not a theme. */
+    --hero-bg: #0b1a2e;
+    --hero-bg-2: #13284630;
+    --hero-text: #f3efe6;
+    --hero-text-muted: #c3ccd9;
+    --hero-border: #ffffff26;
+    --gold: #e3b673;
+    --gold-contrast: #17263d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101114;
+      --surface: #17181c;
+      --border: #2a2b30;
+      --text: #f1f1f2;
+      --text-muted: #a8a9ad;
+      --text-faint: #96979d;
+      --accent: #7ea8d8;
+      --accent-contrast: #0d1b2a;
+      --accent-soft: #1c2733;
+      --chip-bg: #202127;
+      --chip-text: #c7c8cc;
+      --gold-ink: #e3b673;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; flex-wrap: wrap; gap: 18px; padding: 14px 20px; }
+  nav a { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+  nav a:hover { color: var(--text); text-decoration: none; }
+
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  /* Hero band — full-bleed deep navy, the page's one dominant color statement */
+  .hero-band {
+    background:
+      radial-gradient(120% 140% at 15% -10%, var(--hero-bg-2), transparent 60%),
+      var(--hero-bg);
+    color: var(--hero-text);
+  }
+  .hero-band .wrap { padding-top: 44px; padding-bottom: 52px; }
+
+  .profile-strip { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
+  .profile-strip img {
+    width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--gold);
+  }
+  .profile-strip .name { font-weight: 700; font-size: 17px; color: var(--hero-text); }
+  .profile-strip .tag { color: var(--hero-text-muted); font-size: 14px; }
+
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.15;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+    color: var(--hero-text);
+  }
+  .hero p.intro { font-size: 18px; color: var(--hero-text-muted); max-width: 620px; margin: 0 0 32px; }
+
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px; }
+  .stat {
+    background: #ffffff0d; border: 1px solid var(--hero-border); border-radius: 10px;
+    padding: 16px 14px; text-align: center;
+  }
+  .stat .num { font-size: 21px; font-weight: 700; color: var(--gold); display: block; }
+  .stat .label { font-size: 12px; color: var(--hero-text-muted); margin-top: 4px; display: block; }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 11px 20px; border-radius: 8px; font-weight: 600; font-size: 14px;
+    border: 1px solid var(--border);
+  }
+  .btn:hover { text-decoration: none; }
+  .btn-primary { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-secondary { background: var(--surface); color: var(--text); }
+  .btn-secondary:hover { background: var(--accent-soft); }
+
+  /* Hero-band button variants — gold does its one deliberate job here, nowhere else */
+  .btn-hero-primary { background: var(--gold); color: var(--gold-contrast); border-color: var(--gold); }
+  .btn-hero-primary:hover { opacity: 0.9; }
+  .btn-hero-secondary { background: transparent; color: var(--hero-text); border-color: var(--hero-border); }
+  .btn-hero-secondary:hover { background: #ffffff14; }
+
+  h2 { font-size: 26px; margin: 0 0 24px; letter-spacing: -0.01em; }
+  h2 .kicker { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); font-weight: 600; margin-bottom: 8px; }
+
+  .principle { display: flex; gap: 14px; margin-bottom: 18px; }
+  .principle .n { font-weight: 700; color: var(--accent); min-width: 24px; }
+  .principle strong { display: block; margin-bottom: 2px; }
+  .principle span.body { color: var(--text-muted); font-size: 15px; }
+
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .cap { }
+  .cap .n { font-size: 13px; color: var(--text-faint); font-weight: 700; margin-bottom: 8px; }
+  .cap h3 { font-size: 16px; margin: 0 0 8px; }
+  .cap p { font-size: 14px; color: var(--text-muted); margin: 0; }
+
+  .work-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 24px; margin-bottom: 18px;
+  }
+  .work-card .n { font-size: 13px; color: var(--text-faint); font-weight: 700; margin-bottom: 6px; }
+  .work-card h3 { font-size: 18px; margin: 0 0 4px; }
+  .work-card .company { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+  .work-card p.desc { margin: 0 0 14px; font-size: 15px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .chip { background: var(--chip-bg); color: var(--chip-text); font-size: 12px; font-weight: 600; padding: 5px 10px; border-radius: 999px; }
+  .tags { font-size: 12px; color: var(--text-faint); font-style: italic; }
+
+  .timeline-item { padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-item .role { font-weight: 700; font-size: 15px; }
+  .timeline-item .dates { font-size: 13px; color: var(--text-faint); }
+  .timeline-item p { margin: 6px 0 0; font-size: 14px; color: var(--text-muted); }
+  .timeline-note { font-size: 13px; color: var(--text-faint); margin-top: 14px; font-style: italic; }
+
+  .placeholder-box {
+    border: 1px dashed var(--border); border-radius: 10px; padding: 24px;
+    color: var(--text-faint); font-size: 14px;
+  }
+
+  .giving-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .giving-card { display: flex; gap: 14px; }
+  .giving-card img { width: 44px; height: 44px; object-fit: contain; border-radius: 8px; flex-shrink: 0; background: var(--surface); border: 1px solid var(--border); padding: 4px; }
+  .giving-card h3 { margin: 0 0 2px; font-size: 15px; }
+  .giving-card .role { font-size: 12px; color: var(--text-faint); margin-bottom: 6px; }
+  .giving-card p { margin: 0; font-size: 13px; color: var(--text-muted); }
+
+  .writing-item { margin-bottom: 10px; font-size: 15px; }
+
+  .edu-item { margin-bottom: 8px; font-size: 15px; }
+  .edu-item .school { font-weight: 700; }
+
+  footer { padding: 56px 0 40px; }
+  footer h2 { font-size: 24px; }
+  footer .em { font-style: italic; color: var(--gold-ink); }
+  footer .contact-line { margin-top: 18px; font-size: 15px; }
+  footer .copyright { margin-top: 40px; font-size: 12px; color: var(--text-faint); }
+
+  @media (max-width: 640px) {
+    .stat-row { grid-template-columns: repeat(2, 1fr); }
+    .cap-grid { grid-template-columns: 1fr; }
+    .giving-grid { grid-template-columns: 1fr; }
+    nav .wrap { gap: 12px; overflow-x: auto; flex-wrap: nowrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#investing">Investing</a>
+    <a href="#giving">Giving</a>
+    <a href="#writing">Writing</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero-band">
+  <div class="wrap">
+
+    <div class="profile-strip">
+      <img src="assets/headshot.jpg" alt="Jared Khan">
+      <div>
+        <div class="name">Jared Khan</div>
+        <div class="tag">Product &amp; Technology Leader · Enterprise Transformation · AI-Enabled Delivery</div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Change that survives production.</h1>
+      <p class="intro">I lead product and technology transformation in complex, regulated businesses, most recently as SVP of Product &amp; Platform at Kind Lending and VP of Product at JPMorgan Chase. Right now I've founded ApexPrime Products, a health product company, while evaluating the next platform/transformation leadership role.</p>
+
+      <div class="stat-row">
+        <div class="stat"><span class="num">20+ yrs</span><span class="label">in product &amp; technology leadership</span></div>
+        <div class="stat"><span class="num">$2M+/yr</span><span class="label">saved · JPMorgan APDS</span></div>
+        <div class="stat"><span class="num">weeks → hours</span><span class="label">Kind Lending intake</span></div>
+        <div class="stat"><span class="num">9 mo vs 18+</span><span class="label">120-branch conversion</span></div>
+      </div>
+
+      <div class="cta-row">
+        <a href="#experience" class="btn btn-hero-primary">View Experience</a>
+        <a href="https://www.linkedin.com/in/jared-khan-pm" target="_blank" rel="noopener" class="btn btn-hero-secondary">Let's Connect</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="about">
+    <h2><span class="kicker">About</span>Executive, still hands-on.</h2>
+    <p>My titles have read Product, Program, and Technology across 20+ years: JPMorgan Chase, loanDepot, Microsoft, Disney, BofA, Wells Fargo, WaMu, IndyMac and Kind Lending. What is the consistent work underneath the titles? Take a complex platform or operating problem, align the business, technology and governance around it, and lead the change through delivery and into real world use.</p>
+    <p>I stay close to the team and the build the whole way. Across roles that means rolling up sleeves and gathering and shaping requirements, defining epics and backlog priorities, writing specs down to API/ETL detail, mentoring product managers, guiding distributed engineering teams, and carrying work through QA, UAT, and deployment; not just sponsoring from a distance.</p>
+    <p>Since Kind Lending's restructuring, I've been building ApexPrime Products (physical consumer product, Q4 2026 launch), deliberately staying close to hands-on product building while deciding on the next operating role.</p>
+
+    <div style="margin-top: 32px;">
+      <div class="principle">
+        <span class="n">01</span>
+        <span><strong>Govern AI into production, not around it.</strong><span class="body">JPMorgan's APDS went through full risk, compliance, legal, and audit sign-off; production IP, not a pilot.</span></span>
+      </div>
+      <div class="principle">
+        <span class="n">02</span>
+        <span><strong>Own the whole lifecycle, not just the roadmap.</strong><span class="body">Requirements through QA/UAT/deployment: the backlog math has to survive contact with engineering.</span></span>
+      </div>
+      <div class="principle">
+        <span class="n">03</span>
+        <span><strong>The stall is in the middle, not the kickoff.</strong><span class="body">Every transformation dies between announcement and adoption; that stretch is where the hard work actually is.</span></span>
+      </div>
+      <div class="principle">
+        <span class="n">04</span>
+        <span><strong>Build the team alongside the platform.</strong><span class="body">JPMorgan's engineering org went 40→65+ across three continents; Kind Lending tripled headcount; neither happened without deliberate Agile-maturity work.</span></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities">
+    <h2><span class="kicker">Capabilities</span>Where I lead</h2>
+    <div class="cap-grid">
+      <div class="cap">
+        <div class="n">01</div>
+        <h3>Product &amp; Technology Strategy</h3>
+        <p>Platform direction, backlog governance, executive/board partnership. The 8,000→380 JPMorgan weighted-scoring model is just one proof point.</p>
+      </div>
+      <div class="cap">
+        <div class="n">02</div>
+        <h3>Enterprise Transformation &amp; M&amp;A Integration</h3>
+        <p>Large-scale implementation under regulatory deadline. The 120-branch Empower conversion (9 months vs. 18+) and the $8.8B merger treasury integration are two example proof points.</p>
+      </div>
+      <div class="cap">
+        <div class="n">03</div>
+        <h3>AI-Enabled Product Delivery &amp; Governance</h3>
+        <p>Scoping an AI/automation solution and owning its path into regulated production. Kind Lending's intake platform and JPMorgan's APDS are the proof points.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2><span class="kicker">Selected Work</span>Proof, not claims</h2>
+
+    <div class="work-card">
+      <div class="n">01</div>
+      <h3>Production AI decisioning through a systemically important bank</h3>
+      <div class="company">JPMorgan Chase &amp; Co. · VP Product, Property Vertical</div>
+      <p class="desc">Conceived and shipped an automated appraisal-eligibility service (rules engine plus dynamic decisioning logic) through risk, compliance, legal, and audit sign-off. Production IP, not a proof of concept.</p>
+      <div class="chips">
+        <span class="chip">+10% accuracy</span>
+        <span class="chip">-30% manual review</span>
+        <span class="chip">$2M+/yr saved</span>
+      </div>
+      <div class="tags">rules-based decisioning · regulated production · risk &amp; compliance</div>
+    </div>
+
+    <div class="work-card">
+      <div class="n">02</div>
+      <h3>AI-assisted intake platform, weeks to hours</h3>
+      <div class="company">Kind Lending · SVP Product &amp; Platform</div>
+      <p class="desc">Directed (hands-on alongside two backend developers) the build of an AI-driven single-funnel intake system, consolidating PMO, email, help-desk, and informal requests into one funnel.</p>
+      <div class="chips">
+        <span class="chip">weeks → hours turnaround</span>
+        <span class="chip">3x technology team</span>
+      </div>
+      <div class="tags">LLM-assisted workflow · requirements engineering · Agile maturity</div>
+    </div>
+
+    <div class="work-card">
+      <div class="n">03</div>
+      <h3>120-branch platform conversion in half the industry timeline</h3>
+      <div class="company">imortgage / loanDepot · Director, Program Management</div>
+      <p class="desc">Directed a full LOS conversion (to Empower) across 120 branches during an M&amp;A integration, while loan volume doubled.</p>
+      <div class="chips">
+        <span class="chip">9 months vs 18+ month norm</span>
+        <span class="chip">100% continuity through cutover</span>
+      </div>
+      <div class="tags">M&amp;A integration · platform migration · regulatory deadline</div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2><span class="kicker">Experience</span>Roles</h2>
+
+    <div class="timeline-item">
+      <div class="role">SVP, Product &amp; Platform · Kind Lending</div>
+      <div class="dates">Jun 2025 – Jan 2026</div>
+      <p>Owned technology strategy and delivery for a $1B+/month mortgage origination platform.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="role">VP, Product, Property Vertical · JPMorgan Chase</div>
+      <div class="dates">May 2018 – Jun 2025</div>
+      <p>Owned product/technology strategy for a multi-billion-dollar first-mortgage platform; 15 direct, 50+ dotted-line reports across the U.S., India, Philippines.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="role">Director, Product Management · loanDepot</div>
+      <div class="dates">Jul 2016 – Dec 2017</div>
+      <p>Owned the Consumer and Loan Agent portal components of the mello™ digital lending ecosystem.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="role">Director, Program Management · imortgage, a Division of loanDepot</div>
+      <div class="dates">Jun 2014 – Jun 2016</div>
+      <p>Led M&amp;A technology integration of imortgage's retail channel into loanDepot.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="role">Senior/Consulting Manager · The North Highland Company</div>
+      <div class="dates">Mar 2011 – Jun 2014</div>
+      <p>Strategic IT/product consulting for Fortune 500 clients (mortgage, banking, entertainment), including Disney Parks &amp; Resorts and Bank of America.</p>
+    </div>
+
+    <p class="timeline-note">Earlier career: Washington Mutual, IndyMac, Norman Technologies, Troy Consulting. Full detail in the résumé.</p>
+
+    <div class="cta-row" style="margin-top: 20px;">
+      <a href="assets/resume.pdf" target="_blank" class="btn btn-primary">Download Full Résumé (PDF)</a>
+    </div>
+  </section>
+
+  <section id="investing">
+    <h2><span class="kicker">Investing</span>Investing</h2>
+    <p>Equities and FX algorithmic trading, crypto, and business ventures like <strong>ApexPrime Products LLC</strong>.</p>
+  </section>
+
+  <section id="giving">
+    <h2><span class="kicker">Giving</span>Giving</h2>
+    <div class="giving-grid">
+      <div class="giving-card">
+        <img src="assets/logo-first-lego-league.jpg" alt="FIRST LEGO League">
+        <div>
+          <h3><a href="https://www.first-lego-league.org/en/" target="_blank" rel="noopener">FIRST LEGO League</a></h3>
+          <div class="role">Team Coach · since Sep 2024</div>
+          <p>Coaching kids (my own included) to design, build, and program robots solving real-world challenges. Collaboration, innovation, and discovery, with serious STEM learning underneath the fun.</p>
+        </div>
+      </div>
+      <div class="giving-card">
+        <img src="assets/logo-feeding-san-diego.jpg" alt="Feeding San Diego">
+        <div>
+          <h3><a href="https://feedingsandiego.org/" target="_blank" rel="noopener">Feeding San Diego</a></h3>
+          <div class="role">Site Volunteer · since Apr 2023</div>
+          <p>On-site sorting, packing, and event coordination for the county's leading hunger-relief organization. Every shift makes a direct impact on families in need.</p>
+        </div>
+      </div>
+      <div class="giving-card">
+        <img src="assets/logo-urbanlife-farms.jpg" alt="UrbanLife Farms">
+        <div>
+          <h3><a href="https://www.facebook.com/UrbanlifeFarms/" target="_blank" rel="noopener">UrbanLife Farms</a></h3>
+          <div class="role">Work Day Volunteer · since Aug 2022</div>
+          <p>Real physical work (shoveling soil, clearing weeds) that funds youth job training, leadership development, and fresh produce for City Heights.</p>
+        </div>
+      </div>
+      <div class="giving-card">
+        <img src="assets/logo-frostys.jpg" alt="The Frostys">
+        <div>
+          <h3><a href="https://thefrostys.org/" target="_blank" rel="noopener">The Frostys</a></h3>
+          <div class="role">Supporter · since May 2023</div>
+          <p>Music-based sing-alongs for memory-care communities, sparking connection for seniors living with Alzheimer's and dementia, and raising funds for research.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="writing">
+    <h2><span class="kicker">Writing</span>Writing about AI and product leadership</h2>
+    <div class="writing-item">→ <a href="https://www.linkedin.com/feed/update/urn:li:activity:7501038262325608448/" target="_blank" rel="noopener">AI Helped Write This</a></div>
+    <div class="writing-item">→ <a href="https://www.linkedin.com/feed/update/urn:li:activity:7505482238277496832/" target="_blank" rel="noopener">Human Value in the Age of AI</a></div>
+  </section>
+
+  <section id="education">
+    <h2><span class="kicker">Education</span>Education</h2>
+    <div class="edu-item"><span class="school">Bachelor of Arts, Liberal Arts</span> · University of Kansas</div>
+    <div class="edu-item"><span class="school">Six Sigma Black Belt</span> · Six Sigma Academy</div>
+    <div class="edu-item"><span class="school">Professional Scrum Product Owner I (PSPO I)</span> · Scrum.org</div>
+  </section>
+
+  <footer id="contact">
+    <h2>Have a transformation problem worth <span class="em">untangling</span>?</h2>
+    <p>If it's a complex platform, a regulated process, or an operating model that needs to actually work in production, that's the conversation I want to have.</p>
+    <div class="contact-line">
+      <a href="mailto:jaredkhanpm@gmail.com">jaredkhanpm@gmail.com</a> · <a href="https://www.linkedin.com/in/jared-khan-pm" target="_blank" rel="noopener">linkedin.com/in/jared-khan-pm</a> · <a href="https://github.com/JaredK-PM" target="_blank" rel="noopener">github.com/JaredK-PM</a>
+    </div>
+    <div class="copyright">© 2026 Jared Khan</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
